@@ -1,0 +1,132 @@
+@import "tailwindcss";
+
+@theme inline {
+  --font-sans: var(--font-outfit);
+  --font-serif: var(--font-playfair);
+  --color-ivory: #f6f1ea;
+  --color-paper: #fffcf8;
+  --color-ink: #1c1714;
+  --color-muted: #6f675f;
+  --color-line: #eadfd2;
+  --color-gold: #c6a36a;
+  --color-gold-deep: #9a7844;
+  --color-cocoa: #3c2f27;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--color-ivory);
+  color: var(--color-ink);
+  font-family: var(--font-outfit), sans-serif;
+}
+
+::selection {
+  background: #e7d3aa;
+  color: #1c1714;
+}
+
+.font-serif {
+  font-family: var(--font-playfair), Georgia, serif;
+}
+
+.nav-link {
+  position: relative;
+}
+
+.nav-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -6px;
+  height: 1px;
+  width: 100%;
+  background: var(--color-gold-deep);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.35s ease;
+}
+
+.nav-link:hover::after {
+  transform: scaleX(1);
+}
+
+@keyframes ken {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(1.08);
+  }
+}
+
+.ken {
+  animation: ken 24s ease-out forwards;
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.rise {
+  animation: rise 0.9s ease both;
+}
+
+.rise-delay {
+  animation-delay: 0.15s;
+}
+
+.rise-delay-2 {
+  animation-delay: 0.3s;
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.marquee-track {
+  animation: marquee 36s linear infinite;
+}
+
+@keyframes floaty {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+.floaty {
+  animation: floaty 6s ease-in-out infinite;
+}
+
+.gold-button {
+  background: linear-gradient(180deg, #d7b67e 0%, #c6a36a 45%, #b08d4f 100%);
+  color: white;
+  box-shadow: 0 14px 30px -18px rgba(140, 104, 52, 0.95);
+}
+
+.gold-button:hover {
+  transform: translateY(-2px);
+  filter: brightness(1.04);
+}
+
+.card-shadow {
+  box-shadow: 0 24px 50px -36px rgba(60, 42, 28, 0.55);
+}
