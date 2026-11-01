@@ -23,7 +23,9 @@ export default async function ReservationDetail({ params }: { params: Promise<{ 
     supabase.from("stayora_payments").select("*").eq("reservation_id", id).order("created_at", { ascending: false }),
     supabase.from("stayora_operations").select("*").eq("reservation_id", id).order("created_at", { ascending: false }),
     supabase.from("stayora_reservation_rooms").select("stayora_rooms(room_number, floor)").eq("reservation_id", id),
-    stay.status === "confirmed" ? supabase.rpc("stayora_available_rooms", { p_reservation: id }) : Promise.resolve({ data: [] }),
+    stay.status === "confirmed"
+      ? supabase.rpc("stayora_available_rooms", { p_reservation: id })
+      : Promise.resolve({ data: [] as { id: string; room_number: string; floor: number }[], error: null }),
   ]);
 
   const room = Array.isArray(stay.stayora_room_types) ? stay.stayora_room_types[0] : stay.stayora_room_types;
